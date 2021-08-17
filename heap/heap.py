@@ -26,6 +26,7 @@ class BinaryHeap(object):
                 temp = self.heap[index]
                 self.heap[index] = self.heap[minimumChild]
                 self.heap[minimumChild] = temp
+                # print(f"index: {index}, minimumChild: {minimumChild}, \n heap: {self.heap}")
             index = minimumChild
         
     # for finding the child with minimum value
@@ -39,6 +40,7 @@ class BinaryHeap(object):
                 return i * 2 + 1
         
     # for deleting a node from the heap and maintaining the heap property
+    # 끝 노드를 루트 노드로 가져온 이후에 두 자식 노드 중 작은 노드로 노드를 내리면 힙으로 정렬된다.   
     def delete(self):
         deletedNode = self.heap[1]
         self.heap[1] = self.heap[self.currentSize]
@@ -58,10 +60,14 @@ class BinaryHeap(object):
 
 if __name__=="__main__":                
     bh = BinaryHeap()
-    bh.buildHeap([9,5,6,2,3])
+    bh.buildHeap([9,5,6,2,3,1,11,7,31])
 
+    print(bh.heap)
     print('Deleted:',bh.delete())
     print('Deleted:',bh.delete())
+    print(bh.heap)
     print('Deleted:',bh.delete())
     bh.insert(3)
+    print(bh.heap)
     print('Deleted:',bh.delete())
+    print(bh.heap)
